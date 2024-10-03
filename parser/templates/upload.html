@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload File</title>
+</head>
+<body>
+    <h1>Upload File</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload</button>
+    </form>
+
+    {% if extracted_data_list %}
+        <h2>Extracted Data</h2>
+        <form method="POST" action="{% url 'upload_file' %}">
+            {% csrf_token %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>File Name</th>
+                        <th>Name</th>
+                        <th>Mobile Number</th>
+                        <th>Email</th>
+                        <th>Experience</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for data in extracted_data_list %}
+                        <tr>
+                            <td>{{ data.file_name }}</td>
+                            <td><input type="text" name="name" value="{{ data.name }}"></td>
+                            <td><input type="text" name="mobile_number" value="{{ data.mobile_number }}"></td>
+                            <td><input type="text" name="email" value="{{ data.email }}"></td>
+                            <td><input type="text" name="experience" value="{{ data.experience }}"></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <button type="submit" name="save_data">Save Data</button>
+        </form>
+    {% endif %}
+</body>
+</html>
