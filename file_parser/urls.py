@@ -19,10 +19,13 @@ from django.urls import path
 from parser import views
 from django.conf import settings
 from django.conf.urls.static import static
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('auto/', views.index),
     path('upload/', views.upload_file, name='upload_file'),
     path('success/', views.success, name='success'),
+    path('index/', views.searching_req_names),
 ]
 
 if settings.DEBUG:

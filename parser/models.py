@@ -13,3 +13,12 @@ class Candidate(models.Model):
 
     def __str__(self):
         return f"{self.Name} - {self.Email}"
+    
+class RequestId(models.Model):
+    req_id = models.IntegerField(max_length=20,null=True)
+    req_name = models.CharField(max_length=100,null=True,db_index=True)
+
+
+    def __str__(self):
+        return f"{self.req_id} -- {self.req_name}"
+

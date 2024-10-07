@@ -23,9 +23,3 @@ class FileUploadForm(forms.ModelForm):
     class Meta:
         model = FileUpload
         fields = ['file']
-    #     # widgets = {
-    #     #     'file': forms.FileInput(attrs={'multiple': True})  # This allows multiple file selection
-    #     # }
-
-
-
